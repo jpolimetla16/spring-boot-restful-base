@@ -1,5 +1,6 @@
 package com.jp.users;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -54,11 +55,8 @@ class UserControllerTest {
 	
 		String actualResponse = result.getResponse().getContentAsString();
 		System.out.println("JP:"+actualResponse);
-		//assertEquals(expectedResponse, actualResponse);
 		
-		
-		
-
+		assertEquals(objectMapper.writeValueAsString(expectedResponse), actualResponse);
 	}
 
 }
