@@ -19,7 +19,6 @@ public class UserNameValidator implements ConstraintValidator<UsernameValidation
 	public boolean isValid(String username, ConstraintValidatorContext context) {
 		Optional<UserEntity> optUserEntity = userRepository.findByUsername(username);
 		if (optUserEntity.isPresent()) {
-			System.out.println("Janardhan");
 			return false;
 		} else {
 			return true;
