@@ -1,11 +1,14 @@
 package com.jp.users;
 
+import com.jp.annoation.UsernameValidation;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class UserDetailsRequest {
     
 	@NotBlank(message = "username should not be null or empty")
+	@UsernameValidation
 	private String username;
 	
 	@NotBlank(message="password should not be null or empty")
