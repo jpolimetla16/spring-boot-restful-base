@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("api/v1/users")
 public class UserController {
@@ -30,7 +32,7 @@ public class UserController {
 	}
 
 	@PostMapping
-	public ResponseEntity<?> createUser(@RequestBody UserDetailsRequest request) {
+	public ResponseEntity<?> createUser(@Valid @RequestBody UserDetailsRequest request) {
 		UserDto userDto = mapper.map(request, UserDto.class);
 		UserDto savedUserDto = userService.createUser(userDto);
 		UserDetailsResponse response = mapper.map(savedUserDto, UserDetailsResponse.class);
@@ -54,7 +56,7 @@ public class UserController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateUser(@PathVariable Integer id, @RequestBody UserDetailsRequest request) {
+	public ResponseEntity<?> updateUser(@PathVariable Integer id, @Valid @RequestBody UserDetailsRequest request) {
 		UserDto userDto = userService.updateUser(id, mapper.map(request, UserDto.class));
 		UserDto updatedUser = userService.updateUser(id, userDto);
 

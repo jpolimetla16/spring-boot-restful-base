@@ -1,8 +1,15 @@
 package com.jp.users;
 
-public class UserDetailsRequest {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
+public class UserDetailsRequest {
+    
+	@NotBlank(message = "username should not be null or empty")
 	private String username;
+	
+	@NotBlank(message="password should not be null or empty")
+	@Size(min = 4,message="Pssword should have a valid Length")
 	private String password;
 
 	public UserDetailsRequest() {
